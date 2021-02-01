@@ -7,6 +7,7 @@
                 <span>${{product.price}}</span>
             </li>
         </ul>
+        <button @click="reducePrice">Reduce price</button>
     </div>
 </template>
 
@@ -30,7 +31,18 @@
                 // } )
                 // return saleProducts
             }
-        }
+        },
+        methods: {
+            reducePrice() {
+                // *** We commit mutation from our store
+                this.$store.commit('reducePrice')
+
+                // *** This code is moved to mutation in the store
+                //  this.$store.state.products.forEach(element => {
+                //     element.price -= 1.0
+                // });
+            }
+        },
     }
 </script>
 

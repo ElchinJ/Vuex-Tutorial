@@ -38,6 +38,12 @@ export default new Vuex.Store({
   },
   
   mutations: {
+    // *** OBS! We could use reducePrice: state => ... as we did in the saleProducts getter above. In that case we drop 'this' keyword. 
+    reducePrice() {
+        this.state.products.forEach(element => {
+        element.price -= 1.0
+    });
+    }
   },
   actions: {
   },
