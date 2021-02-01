@@ -13,7 +13,11 @@
 <script>
     export default {
         name: 'ProductListOne',
-        props: ['products']
+        computed: {
+            products() {
+                return this.$store.state.products
+            }
+        }
     }
 </script>
 
@@ -24,5 +28,8 @@ ul {
 li {
     list-style-type: none;
     font-size: 24px;
+}
+h2 {
+    background-color: lightblue;
 }
 </style>
