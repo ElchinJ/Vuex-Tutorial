@@ -34,13 +34,16 @@
         },
         methods: {
             reducePrice() {
-                // *** We commit mutation from our store
-                this.$store.commit('reducePrice')
-
                 // *** This code is moved to mutation in the store
                 //  this.$store.state.products.forEach(element => {
                 //     element.price -= 1.0
                 // });
+
+                 // *** If we want to commit mutation from our store(but this is syncronous):
+                this.$store.commit('reducePriceMutation')
+
+                // *** We dispatch our action which commits mutation(it is asyncronous) but it moved to PorductListTwo:
+                //this.$store.dispatch('reducePriceAction')
             }
         },
     }

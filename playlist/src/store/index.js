@@ -11,6 +11,7 @@ export default new Vuex.Store({
       { name: 'Audi', price: 260},
       { name: 'Volvo', price: 200},
     ],
+    amount: 0, // is used in teh ProductListTwo as initial value
 
     // *** This code for my own use in TestComponent
     players: [
@@ -34,19 +35,29 @@ export default new Vuex.Store({
         }
     } )
     return saleProducts
-    }
+    },
   },
   
   mutations: {
     // *** OBS! We could use reducePrice: state => ... as we did in the saleProducts getter above. In that case we drop 'this' keyword. 
-    reducePrice() {
+    // *** We put the first '_' parameter as it is unused because reducePriceMutaion method accepts two parameters(the first one is an object). Payload parameter we accept from out action reducePriceAction method
+    reducePriceMutation(_, payload) {
         this.state.products.forEach(element => {
-        element.price -= 1.0
+          element.price -= payload
     });
     }
   },
+
   actions: {
+    // *** We receive our parameter from ProductListTwo as 'payload'. Payload then send further to the reducePriceMutation
+    reducePriceAction: (context, payload) => {
+      setTimeout(() => {
+        // *** We commit our mutation inside action after 2 seconds
+        context.commit('reducePriceMutation', payload)
+      }, 2000);
+    }
   },
+
   modules: {
   }
 })
