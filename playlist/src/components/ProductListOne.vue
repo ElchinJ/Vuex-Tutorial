@@ -12,14 +12,23 @@
 </template>
 
 <script>
+// *** Import mapGetters to wrap all our getters into a single method. We dont use mapActions in here.
+import {mapGetters, mapActions} from 'vuex'
+
     export default {
         name: 'ProductListOne',
         computed: {
             products() {
                 return this.$store.state.products
             },
-            // saleProducts() returns items which are on sale. 
-            saleProducts() {
+            // *** mapGetters is a method which takes an array of all our getters from the store
+            ...mapGetters([
+                'saleProducts',
+                // other getter should be writen in here
+            ])
+
+            // *** saleProducts() returns items which are on sale. Because of we use mapGetters we comment out the code below
+            /* saleProducts() {
                 return this.$store.getters.saleProducts
 
                 //*** We move it to the getters in the store folder.
@@ -30,7 +39,7 @@
                 //     }
                 // } )
                 // return saleProducts
-            }
+            } */
         },
         methods: {
             reducePrice() {

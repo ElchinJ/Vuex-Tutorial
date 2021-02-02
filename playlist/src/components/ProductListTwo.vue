@@ -14,6 +14,9 @@
 </template>
 
 <script>
+// *** Import mapGetters and mapActions to wrap all our getters and actions into a single method. In this component we dont use mapGetters
+import {mapGetters, mapActions} from 'vuex'
+
     export default {
         name: 'ProductListTwo',
         computed: {
@@ -23,11 +26,19 @@
         },
 
         methods: {
+            // *** Because of we use mapActions we comment out the reducePrice action below
             reducePrice(event) {
                 // *** We dispatch our action which commits mutation(it is asyncronous):
                 event = this.getAmount
                 this.$store.dispatch('reducePriceAction',event)
             },
+
+            // *** mapActions not work properly as it has to pass a parameter. Come back later
+            /* ...mapActions([
+                'reducePrice(event)',
+                // other action should be written in here
+            ]), */
+            
             getAmount() {
                 // *** We take an input field value
                 const inputValue = document.querySelector('#inputValue').value
