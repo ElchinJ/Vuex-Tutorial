@@ -11,7 +11,7 @@ export default new Vuex.Store({
       { name: 'Audi', price: 260},
       { name: 'Volvo', price: 200},
     ],
-    amount: 0, // is used in teh ProductListTwo as initial value
+    amount: 0, // is used in the ProductListTwo as initial value
 
     // *** This code for my own use in TestComponent
     players: [
